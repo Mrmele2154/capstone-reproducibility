@@ -16,6 +16,7 @@ No Rchunk is needed to accomplish this.
 Read in the homework3.csv data. For each of the following steps you
 should preface your R commands with some plain English explanation.
 -->
+
 ```{r}
 dat<-read.csv("homework3.csv")
 ```
@@ -23,6 +24,7 @@ dat<-read.csv("homework3.csv")
 <!--
 Check the structure of the data.
 -->
+
 ```{r}
 str(dat)
 ```
