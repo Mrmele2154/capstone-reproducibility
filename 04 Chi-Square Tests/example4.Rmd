@@ -12,7 +12,7 @@ should preface your R commands with some plain English explanation.
 
 The first step is to read in the data.
 ```{r
-dat<-read.csv("example4.csv")
+dat<-read.csv("homework4.csv")
 ```
 <!--
 Check the structure of the data.
@@ -34,7 +34,7 @@ Now I'll create a table that shows how many people fell into each
 category.
 
 ```{r}
-table(dat$major, dat$gender)
+table(dat$condition, dat$agreement)
 ```
 
 From examining the table, it appears that there might more female
