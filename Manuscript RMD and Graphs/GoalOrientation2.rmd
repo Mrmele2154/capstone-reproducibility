@@ -1,12 +1,14 @@
----
-title: "GoalOrientation"
-output: html_document
----
+
+## Manuscript data with graphs
+
+First I'll read in the data.
 
 ```{r}
 dat<-read.csv("Goal Orientation answersfinal.csv")
 ```
 
+Then I'll check the structure of the data and change any variables that should
+be factor variables into factor variables.
 
 ```{r}
 str(dat)
@@ -18,9 +20,17 @@ dat$Gender<-as.factor(dat$Gender)
 dat$Condition<-as.factor(dat$Condition)
 ```
 
+Now, I'll perform a between-subjects 2-way ANOVA looking for effects between survey scores and whether or not participants were effected by the condition description provided, as well as the difference between scores in males and females. Then I'll create line and grouped bar graph for the data I analyzed. But first I need to
+summarize the data.
+
 ```{r}
 summary(aov(Result~Condition*Gender, data=dat))
 ```
+The analyses shows a small effect of condition, F(2,137) =
+4.13, p < .05. There was no significant effect of gender, F(1,137) =
+2.04, p > .05. There was no interaction between condition and
+gender, F(2,137) = .02, p < .05.
+
 
 ```{r}
 library(ggplot2)
@@ -28,6 +38,7 @@ library(gplots)
 library(dplyr)
 ```
 
+Then I'll create line and grouped bar graph for the data I analyzed. But first I need to summarize the data.
 
 ```{r}
 temp<-dat%>%group_by(Condition,Gender)%>%
@@ -103,3 +114,5 @@ f<-ggplot(temp, aes(x=Condition,
   theme(legend.text=element_text(size=10,face="bold"))
 f
 ```
+
+From the figures we can see that eventhough the participants were preexposed to a specific goal orientation prior to taking the survey, there was only a small effect on how they answered the survey and which goal orientation they identified as. We can also see that results of the survery did not present a significant change whether the participant was male or female. Finally, there was no effect on condition and gender within the interaction.
